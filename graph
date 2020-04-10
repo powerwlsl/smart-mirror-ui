@@ -1,0 +1,27 @@
+
+  @values1 = [12, 15, 18, 17, 12, 6]
+  @x_axis1 = ['9','12','3','6','9','12']
+
+
+ stack do
+    para "Plot Demo Line and Column"
+    widget_width = 400
+    widget_height = 300
+    stack do
+      flow do
+        @grf = plot widget_width, widget_height, font: "Helvetica", default: "skip", boundary_box: false,
+        title: '', caption: '', background: black, auto_grid: false, default: "skip"
+
+        @grf2 = plot widget_width, widget_height+100, font: "Mono", auto_grid: false,
+          default: "skip", chart: "column", boundary_box: false, title: '', caption: '', background: black
+      end
+    end
+    @grf.add values: @values1, labels: @x_axis1,
+      name: "foobar", min: 0, max: 26 , desc: "", strokewidth: 8,
+       points: true, color: white
+
+    @grf2.add values: @values1, labels: @x_axis1,
+       name: "Bar", min: 0, max:  30, desc: "",
+       points: true, strokewidth: 12, color: white
+
+  end
